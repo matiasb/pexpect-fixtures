@@ -1,4 +1,4 @@
-# Copyright (C) 2012  Matias Bordese
+# Copyright (C) 2013  Matias Bordese
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
