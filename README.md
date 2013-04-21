@@ -2,7 +2,7 @@ Pexpect Fixture Runner
 ======================
 
 Runner for simple pexpect test fixtures (created to test command line programs
-by students learning C programming).  
+developed by students learning C programming).  
 Requires Pexpect: https://github.com/noahspurrier/pexpect.
 
 
