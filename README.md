@@ -23,8 +23,8 @@ Ex.: > .*
 Unexpected output. You can use regular expressions here (negated pexpect.expect).  
 Ex.: ! Unexpected output
 
-**:**
-Custom unexpected error message. Use after a > or ! instruction.
+**:**  
+Custom expect error message. Use after a > or ! instruction.  
 Ex.: : Unexpected output!
 
 **@**  
