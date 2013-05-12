@@ -20,6 +20,7 @@ from pexpect_fixtures.instructions import (
     BREAKPOINT,
     COMMENT,
     EXPECT,
+    NEXPECT,
     SEND,
     MSG,
     INSTR_PATTERN,

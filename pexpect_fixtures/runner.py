@@ -21,6 +21,7 @@ from pexpect_fixtures.instructions import (
     BREAKPOINT,
     COMMENT,
     EXPECT,
+    NEXPECT,
     SEND,
     MSG,
     INSTR_PATTERN,
@@ -33,7 +34,7 @@ class ExpectOpError(Exception):
 
 def _expect_error(fixture, index):
     instructions = fixture[index:index + 2]
-    msg = "expected '%s' not found" % instructions[0][1]
+    msg = "Failed: '%s' (l.%d)" % (' '.join(instructions[0]), index)
     if len(instructions) == 2 and instructions[1][0] == MSG:
         msg = instructions[1][1]
     raise ExpectOpError(msg)
@@ -49,11 +50,11 @@ def run(command, fixture, timeout=2, verbose=0):
 
     for i, instr in enumerate(fixture):
         op, value = instr
-        if op == EXPECT:
+        if op in [EXPECT, NEXPECT]:
             expected = [pexpect.TIMEOUT, pexpect.EOF,
                         value.encode('string-escape')]
             res = child.expect(expected, timeout=timeout)
-            if res in [0, 1]:
+            if (op == EXPECT and res <= 1) or (op == NEXPECT and res > 1):
                 _expect_error(fixture, i)
         elif op == SEND:
             child.sendline(value)

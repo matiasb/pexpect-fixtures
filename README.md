@@ -20,8 +20,12 @@ Expected output. You can use regular expressions here (pexpect.expect).
 Ex.: > .*
 
 **!**  
-Custom unexpected error message. Use after a > instruction.  
-Ex.: ! Unexpected output!
+Unexpected output. You can use regular expressions here (negated pexpect.expect).  
+Ex.: ! Unexpected output
+
+**:**
+Custom unexpected error message. Use after a > or ! instruction.
+Ex.: : Unexpected output!
 
 **@**  
 Breakpoint. Switch to interactive mode (pexpect.interact).  

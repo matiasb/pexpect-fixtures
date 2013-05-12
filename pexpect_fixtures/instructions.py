@@ -18,10 +18,11 @@ import re
 
 SEND = '<'
 EXPECT = '>'
+NEXPECT = '!'
 BREAKPOINT = '@'
 COMMENT = '#'
-MSG = '!'
-OPS = '|'.join([SEND, EXPECT, BREAKPOINT, COMMENT, MSG])
+MSG = ':'
+OPS = '|'.join([SEND, EXPECT, NEXPECT, BREAKPOINT, COMMENT, MSG])
 
 # instructions pattern
 INSTR_PATTERN = re.compile(r'^(%s)\s*(.*)' % OPS)
