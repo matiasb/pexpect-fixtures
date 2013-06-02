@@ -51,8 +51,7 @@ def run(command, fixture, timeout=2, verbose=0):
     for i, instr in enumerate(fixture):
         op, value = instr
         if op in [EXPECT, NEXPECT]:
-            expected = [pexpect.TIMEOUT, pexpect.EOF,
-                        value.encode('string-escape')]
+            expected = [pexpect.TIMEOUT, pexpect.EOF, value]
             res = child.expect(expected, timeout=timeout)
             if (op == EXPECT and res <= 1) or (op == NEXPECT and res > 1):
                 _expect_error(fixture, i)
