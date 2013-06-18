@@ -58,15 +58,17 @@ def main():
         sys.stderr.write('Invalid fixture: %s\n' % e.message)
         sys.exit(1)
 
+    return_code = 0
     try:
         process = runner.run(
             args.command, test_fixture, timeout=args.timeout,
             verbose=args.verbosity_level)
     except runner.ExpectOpError as e:
         sys.stdout.write('\nFAILURE: %s\n' % e.message)
+        return_code = 1
     except Exception as e:
         sys.stderr.write('\nERROR: %s\n' % e.message)
-        sys.exit(1)
+        return_code = 1
     else:
         sys.stdout.write('\nSUCCESS\n')
         sys.stdout.write(
@@ -74,7 +76,9 @@ def main():
         # wait for normal process exit, if needed
         time.sleep(args.timeout)
         _finish_run(process)
-   
+
+    sys.exit(return_code)
+
 
 if __name__ == '__main__':
     main()
